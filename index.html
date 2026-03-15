@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>George Barnes Family Reunion 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Montserrat:wght@300;400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:        #221414;
+  --bg2:       #2C1A1A;
+  --bg3:       #1A1010;
+  --burgundy:  #60100B;
+  --burg-lt:   #7A1A14;
+  --green:     #228B22;
+  --green-lt:  #2AAD2A;
+  --green-pale:#1A3D1A;
+  --mustard:   #E1AD01;
+  --mustard-lt:#F0C830;
+  --ivory:     #F5F0E8;
+  --gray:      #9E8E7E;
+  --border:    rgba(96,16,11,0.4);
+  --border2:   rgba(225,173,1,0.2);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ── */
+.gold-rule   { width:50px; height:2px; background:var(--green); border-radius:2px; margin:0 auto 1.5rem; }
+.section-eye { font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--mustard); margin-bottom:0.75rem; display:block; }
+.section-h2  { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:700; color:var(--ivory); line-height:1.1; margin-bottom:1.25rem; }
+.section-h2 em { color:var(--mustard); font-style:italic; }
+.section-sub { font-size:0.95rem; color:var(--gray); font-weight:300; line-height:1.8; max-width:560px; }
+
+/* ── COMING SOON OVERLAY ── */
+.coming-soon-overlay {
+  display:flex;
+  position:fixed; inset:0; z-index:9000;
+  background: var(--bg3);
+  align-items:center; justify-content:center; flex-direction:column; gap:1.5rem;
+  text-align:center; padding:2rem;
+}
+.coming-soon-overlay.hidden { display:none; }
+.coming-soon-overlay h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:700; font-style:italic;
+  color:var(--mustard);
+}
+.coming-soon-overlay p { color:var(--gray); font-size:0.95rem; max-width:420px; line-height:1.8; }
+.coming-soon-overlay .ornament { font-size:2rem; color:var(--green); letter-spacing:0.5rem; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(34,20,20,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:padding 0.3s;
+}
+.nav-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem; font-weight:700;
+  color:var(--mustard); letter-spacing:0.04em;
+  text-decoration:none;
+}
+.nav-links { display:flex; gap:1.75rem; list-style:none; align-items:center; }
+.nav-links a {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.68rem; font-weight:600;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--gray); text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--mustard); }
+.nav-links a.rsvp-link {
+  background:var(--green); color:#fff !important;
+  padding:0.45rem 1.1rem; border-radius:2px;
+  transition:background 0.2s;
+}
+.nav-links a.rsvp-link:hover { background:var(--green-lt); }
+.nav-links li.hidden-page > a { opacity:0.35; pointer-events:none; }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { width:22px; height:2px; background:var(--ivory); border-radius:2px; transition:all 0.3s; }
+
+@media (max-width:768px) {
+  nav { padding:1rem 1.25rem; }
+  .nav-links { display:none; position:fixed; top:60px; left:0; right:0; background:var(--bg2); flex-direction:column; gap:0; padding:1rem 0; border-bottom:1px solid var(--border); }
+  .nav-links.open { display:flex; }
+  .nav-links li { width:100%; text-align:center; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+  .hamburger { display:flex; }
+}
+
+/* ── SECTIONS: hidden by default ── */
+.site-section { display:none; }
+.site-section.visible { display:block; }
+
+/* ══════════════════════════
+   SECTION: HERO
+══════════════════════════ */
+#home {
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center;
+  padding:120px 2rem 80px;
+  position:relative; overflow:hidden;
+}
+#home::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(34,139,34,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(96,16,11,0.2) 0%, transparent 50%);
+}
+#home::after {
+  content:'';
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle, rgba(225,173,1,0.04) 1px, transparent 1px);
+  background-size:32px 32px;
+}
+.hero-inner { position:relative; z-index:1; max-width:760px; }
+.hero-eyebrow {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.68rem; font-weight:700;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color:var(--mustard); margin-bottom:1.5rem;
+  opacity:0; animation:fadeUp 0.8s ease 0.2s forwards;
+}
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,8vw,6rem);
+  font-weight:700; line-height:0.92;
+  color:var(--ivory); margin-bottom:0.4rem;
+  opacity:0; animation:fadeUp 0.8s ease 0.4s forwards;
+}
+.hero-title em { color:var(--mustard); font-style:italic; display:block; }
+.hero-sub {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2.5vw,1.4rem);
+  font-style:italic; color:var(--gray);
+  margin-bottom:2.5rem;
+  opacity:0; animation:fadeUp 0.8s ease 0.55s forwards;
+}
+.hero-rule { opacity:0; animation:fadeUp 0.8s ease 0.65s forwards; }
+
+.hero-dates {
+  margin:0 auto 2.5rem;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  max-width:420px; width:100%;
+  opacity:0; animation:fadeUp 0.8s ease 0.75s forwards;
+}
+.hero-date-row { padding:12px 0; text-align:center; }
+.hero-date-row + .hero-date-row { border-top:1px solid rgba(255,255,255,0.05); }
+.hero-date-label {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.65rem; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase;
+  margin-bottom:3px;
+}
+.hero-date-label.green  { color:var(--green); }
+.hero-date-label.mustard { color:var(--mustard); }
+.hero-date-name {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:1rem; color:var(--ivory);
+}
+
+.hero-location {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.68rem; font-weight:700;
+  letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--mustard); margin-bottom:2.5rem;
+  opacity:0; animation:fadeUp 0.8s ease 0.85s forwards;
+}
+.hero-btns {
+  display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+  opacity:0; animation:fadeUp 0.8s ease 0.95s forwards;
+}
+.btn-primary {
+  background:var(--green); color:#fff;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.72rem; font-weight:700;
+  letter-spacing:0.15em; text-transform:uppercase;
+  padding:0.85rem 2rem; border-radius:2px;
+  text-decoration:none; border:none; cursor:pointer;
+  transition:all 0.25s;
+  box-shadow:0 4px 18px rgba(34,139,34,0.25);
+  display:inline-block;
+}
+.btn-primary:hover { background:var(--green-lt); transform:translateY(-2px); }
+.btn-outline {
+  background:transparent; color:var(--ivory);
+  font-family:'Montserrat',sans-serif;
+  font-size:0.72rem; font-weight:600;
+  letter-spacing:0.15em; text-transform:uppercase;
+  padding:0.85rem 2rem; border-radius:2px;
+  text-decoration:none; border:1px solid rgba(245,240,232,0.2);
+  transition:all 0.25s; display:inline-block;
+}
+.btn-outline:hover { border-color:var(--mustard); color:var(--mustard); }
+
+.hero-theme {
+  margin-top:2.5rem;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:0.9rem; color:var(--gray);
+  opacity:0; animation:fadeUp 0.8s ease 1.05s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ══════════════════════════
+   SECTION: COUNTDOWN
+══════════════════════════ */
+#countdown {
+  background:var(--green-pale);
+  padding:3rem 2rem; text-align:center;
+  border-top:1px solid rgba(34,139,34,0.2);
+  border-bottom:1px solid rgba(34,139,34,0.2);
+}
+.countdown-label {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.65rem; font-weight:700;
+  letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--mustard); margin-bottom:1.5rem;
+}
+.countdown-grid { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+.count-block {
+  background:rgba(0,0,0,0.25);
+  border:1px solid var(--border); border-radius:4px;
+  padding:1.2rem 1.8rem; min-width:88px; text-align:center;
+}
+.count-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem; font-weight:700;
+  color:var(--mustard); line-height:1; display:block;
+}
+.count-lbl {
+  font-family:'Montserrat',sans-serif;
+  font-size:0.58rem; font-weight:600;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--gray); margin-top:0.3rem; display:block;
+}
+
+/* ══════════════════════════
+   SHARED SECTION CHROME
+══════════════════════════ */
+.section-wrap { max-width:1040px; margin:0 auto; padding:0 2rem; }
+
+/* ══════════════════════════
+   SECTION: EVENT DETAILS
+══════════════════════════ */
+#details { padding:6rem 2rem; background:var(--bg2); }
+.details-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+  gap:1.25rem; margin-top:3rem;
+}
+.detail-card {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:4px; padding:1.75rem 1.5rem; text-align:center;
+  transition:border-color 0.25s, transform 0.25s;
+}
+.detail-card:hover { border-color:var(--border2); transform:translateY(-3px); }
+.detail-icon { font-size:2rem; margin-bottom:0.75rem; display:block; }
+.detail-card h3 {
+  font-family:'Montserrat',sans-serif; font-size:0.62rem;
+  font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--mustard); margin-bottom:0.5rem;
+}
+.detail-card p {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem; color:var(--ivory); line-height:1.4;
+}
+.detail-card .detail-sub { font-family:'Lato',sans-serif; font-size:0.78rem; color:var(--gray); margin-top:0.3rem; font-weight:300; }
+
+/* ══════════════════════════
+   SECTION: SCHEDULE
+══════════════════════════ */
+#schedule { padding:6rem 2rem; background:var(--bg); }
+.schedule-inner { max-width:700px; margin:0 auto; }
+.timeline { position:relative; padding-left:2.5rem; margin-top:2.5rem; }
+.timeline::before {
+  content:''; position:absolute;
+  left:9px; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(to bottom, var(--green-pale), var(--green), var(--mustard), var(--green-pale));
+}
+.timeline-day { margin-bottom:2rem; }
+.timeline-day-label {
+  font-family:'Montserrat',sans-serif; font-size:0.62rem;
+  font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--mustard); margin-bottom:1rem; margin-left:-2.5rem;
+  padding-left:0.5rem; border-left:2px solid var(--mustard);
+}
+.timeline-item { position:relative; padding:0 0 1.5rem 1.5rem; }
+.timeline-item::before {
+  content:''; position:absolute;
+  left:-5px; top:8px; width:10px; height:10px;
+  border-radius:50%; background:var(--bg);
+  border:2px solid var(--green);
+}
+.t-bubble {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:4px; padding:1rem 1.25rem;
+  transition:border-color 0.2s;
+}
+.t-bubble:hover { border-color:var(--border2); }
+.t-time {
+  font-family:'Montserrat',sans-serif; font-size:0.6rem;
+  font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--green); margin-bottom:0.3rem;
+}
+.t-event {
+  font-family:'Cormorant Garamond',serif; font-size:1.15rem;
+  font-weight:700; color:var(--ivory); margin-bottom:0.2rem;
+}
+.t-desc { font-size:0.85rem; color:var(--gray); line-height:1.65; font-weight:300; }
+
+/* ══════════════════════════
+   SECTION: OUR LEGACY
+══════════════════════════ */
+#legacy { padding:6rem 2rem; background:var(--bg2); }
+.legacy-inner {
+  max-width:1040px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:4rem; align-items:center;
+}
+@media(max-width:720px) { .legacy-inner { grid-template-columns:1fr; gap:2rem; } }
+.legacy-img {
+  background:rgba(34,139,34,0.08);
+  border:1px dashed rgba(225,173,1,0.3);
+  border-radius:4px; aspect-ratio:4/5;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:0.75rem; padding:2rem; text-align:center;
+}
+.legacy-img-icon { font-size:2.5rem; opacity:0.4; }
+.legacy-img-hint {
+  font-family:'Montserrat',sans-serif; font-size:0.68rem;
+  font-weight:600; color:var(--mustard); opacity:0.65;
+  letter-spacing:0.06em;
+}
+.legacy-text p { font-size:0.95rem; color:var(--gray); line-height:1.9; margin-bottom:1rem; font-weight:300; }
+.legacy-stats { display:flex; gap:1.25rem; margin-top:2rem; flex-wrap:wrap; }
+.legacy-stat {
+  flex:1; min-width:80px;
+  background:rgba(0,0,0,0.2); border:1px solid var(--border);
+  border-radius:4px; padding:1rem; text-align:center;
+}
+.legacy-stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem; font-weight:700; color:var(--mustard); line-height:1;
+}
+.legacy-stat-lbl {
+  font-family:'Montserrat',sans-serif; font-size:0.6rem;
+  font-weight:600; color:var(--gray); margin-top:0.3rem;
+  text-transform:uppercase; letter-spacing:0.1em;
+}
+
+/* ══════════════════════════
+   SECTION: RSVP / REGISTRATION
+══════════════════════════ */
+#rsvp { padding:6rem 2rem; background:var(--bg); }
+.rsvp-intro { text-align:center; margin-bottom:3rem; }
+.rsvp-form-wrap {
+  max-width:680px; margin:0 auto;
+  display:flex; flex-direction:column; gap:1.5rem;
+}
+.form-card {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:4px; padding:2rem;
+}
+.form-card-title {
+  font-family:'Cormorant Garamond',serif; font-size:1.15rem;
+  font-weight:700; color:var(--ivory); margin-bottom:1.25rem;
+  padding-bottom:0.6rem; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:0.6rem;
+}
+.form-card-title .num {
+  background:var(--green); color:#fff;
+  border-radius:50%; width:24px; height:24px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Lato',sans-serif; font-size:0.72rem; font-weight:700;
+  flex-shrink:0;
+}
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:520px) { .form-row { grid-template-columns:1fr; } }
+.form-field { display:flex; flex-direction:column; gap:0.35rem; margin-bottom:0.85rem; }
+.form-field:last-child { margin-bottom:0; }
+.form-field label {
+  font-family:'Montserrat',sans-serif; font-size:0.68rem;
+  font-weight:700; letter-spacing:0.07em; text-transform:uppercase;
+  color:var(--gray);
+}
+.form-field label .req { color:var(--mustard); margin-left:2px; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:3px; padding:0.65rem 0.85rem;
+  font-family:'Lato',sans-serif; font-size:0.9rem;
+  color:var(--ivory); width:100%;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline:none; border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(34,139,34,0.15);
+}
+.form-field textarea { resize:vertical; min-height:80px; }
+.form-field select option { background:var(--bg2); }
+.field-error { font-size:0.72rem; color:#e05555; display:none; }
+.form-field.has-error input,
+.form-field.has-error select { border-color:#e05555; }
+.form-field.has-error .field-error { display:block; }
+
+/* Attendance toggle */
+.attend-toggle { display:flex; gap:0.75rem; flex-wrap:wrap; }
+.attend-toggle label {
+  flex:1; min-width:120px; cursor:pointer;
+  font-family:'Montserrat',sans-serif; font-size:0.72rem;
+  font-weight:400; text-transform:none; letter-spacing:0; color:var(--gray);
+}
+.attend-toggle input[type="radio"] { display:none; }
+.attend-option {
+  display:block; border:1px solid var(--border);
+  border-radius:3px; padding:0.7rem; text-align:center;
+  font-weight:600; font-size:0.78rem; letter-spacing:0.04em;
+  color:var(--gray); background:var(--bg); transition:all 0.18s;
+}
+.attend-toggle input:checked + .attend-option {
+  border-color:var(--green); background:var(--green); color:#fff;
+}
+.attend-sub { display:block; font-size:0.65rem; font-style:italic; font-weight:400; letter-spacing:0; margin-top:3px; opacity:0.8; }
+
+/* SMS opt-in */
+.sms-optin-box {
+  display:flex; align-items:flex-start; gap:0.75rem;
+  background:rgba(34,139,34,0.08); border:1px solid rgba(34,139,34,0.2);
+  border-radius:4px; padding:0.85rem 1rem; margin-bottom:0.85rem;
+}
+.sms-optin-box input[type="checkbox"] {
+  width:16px; height:16px; margin-top:3px;
+  accent-color:var(--green); cursor:pointer; flex-shrink:0;
+}
+.sms-optin-label {
+  font-size:0.82rem; color:var(--ivory); line-height:1.5;
+  font-family:'Lato',sans-serif;
+}
+.sms-optin-label strong { color:var(--green); display:block; font-size:0.85rem; }
+.sms-optin-label span { font-size:0.72rem; color:var(--gray); display:block; margin-top:2px; }
+
+/* Guest counter */
+.counter-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.25rem; }
+.counter-label { font-size:0.9rem; font-weight:700; color:var(--ivory); }
+.counter-btns { display:flex; align-items:center; gap:0.6rem; }
+.counter-btn {
+  width:32px; height:32px; border-radius:50%;
+  border:1px solid var(--green); background:transparent;
+  color:var(--green); font-size:1.15rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.18s; line-height:1;
+}
+.counter-btn:hover { background:var(--green); color:#fff; }
+.counter-btn:disabled { opacity:0.3; cursor:not-allowed; }
+.counter-num {
+  font-family:'Cormorant Garamond',serif; font-size:1.4rem;
+  font-weight:700; color:var(--mustard); min-width:28px; text-align:center;
+}
+#guest-list { display:flex; flex-direction:column; gap:0.85rem; }
+.guest-card {
+  background:rgba(0,0,0,0.15); border:1px dashed var(--border);
+  border-radius:4px; padding:1rem;
+  animation:fadeSlide 0.25s ease;
+}
+@keyframes fadeSlide { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+.guest-card-head {
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:0.85rem;
+}
+.guest-card-title {
+  font-family:'Cormorant Garamond',serif; font-size:1rem;
+  font-style:italic; color:var(--ivory);
+}
+.remove-guest {
+  background:none; border:none; color:var(--gray);
+  cursor:pointer; font-size:1rem; transition:color 0.15s;
+}
+.remove-guest:hover { color:#e05555; }
+
+/* Submit */
+.rsvp-submit {
+  width:100%; padding:1rem;
+  background:linear-gradient(135deg, var(--burg-lt), var(--green));
+  color:#fff; border:none; border-radius:3px;
+  font-family:'Cormorant Garamond',serif; font-size:1.1rem;
+  font-style:italic; cursor:pointer;
+  letter-spacing:0.04em; transition:opacity 0.2s, transform 0.15s;
+}
+.rsvp-submit:hover { opacity:0.9; transform:translateY(-1px); }
+
+/* Success */
+#rsvp-success {
+  display:none; text-align:center;
+  padding:3rem 1.5rem; max-width:480px; margin:0 auto;
+}
+#rsvp-success h3 {
+  font-family:'Cormorant Garamond',serif; font-size:2rem;
+  color:var(--mustard); margin-bottom:0.75rem;
+}
+#rsvp-success p { color:var(--gray); line-height:1.8; font-size:0.95rem; }
+
+/* ══════════════════════════
+   SECTION: GALLERY
+══════════════════════════ */
+#gallery { padding:6rem 2rem; background:var(--bg2); }
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:180px 180px;
+  gap:0.75rem; max-width:960px; margin:2.5rem auto 0;
+}
+@media(max-width:600px) {
+  .gallery-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:auto; }
+  .gallery-cell.large { grid-column:span 2; height:180px; }
+}
+.gallery-cell {
+  background:var(--bg); border:1px dashed var(--border);
+  border-radius:4px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:0.5rem;
+  cursor:pointer; transition:all 0.25s;
+}
+.gallery-cell:hover { border-color:var(--border2); background:rgba(34,139,34,0.08); }
+.gallery-cell.large { grid-column:span 2; grid-row:span 2; }
+.gallery-cell .g-icon { font-size:1.8rem; opacity:0.3; }
+.gallery-cell .g-hint {
+  font-family:'Montserrat',sans-serif; font-size:0.58rem;
+  font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--gray); text-align:center; padding:0 1rem;
+}
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+footer {
+  background:var(--bg3); border-top:1px solid var(--border);
+  padding:3rem 2rem; text-align:center;
+}
+.footer-logo {
+  font-family:'Cormorant Garamond',serif; font-size:1.4rem;
+  font-weight:700; color:var(--mustard); margin-bottom:0.3rem;
+}
+.footer-tagline {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:0.9rem; color:var(--gray); margin-bottom:1.5rem;
+}
+.footer-links { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; list-style:none; margin-bottom:1.5rem; }
+.footer-links a {
+  font-family:'Montserrat',sans-serif; font-size:0.62rem;
+  font-weight:600; letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--gray); text-decoration:none; transition:color 0.2s;
+}
+.footer-links a:hover { color:var(--mustard); }
+.footer-copy { font-size:0.7rem; color:rgba(158,142,126,0.4); letter-spacing:0.08em; }
+
+/* ══════════════════════════
+   ADMIN PANEL
+══════════════════════════ */
+#admin-toggle-btn {
+  position:fixed; bottom:1.5rem; right:1.5rem; z-index:9999;
+  background:var(--bg3); border:1px solid var(--border);
+  color:var(--mustard); font-family:'Montserrat',sans-serif;
+  font-size:0.62rem; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; padding:0.6rem 1rem;
+  border-radius:3px; cursor:pointer; transition:all 0.2s;
+}
+#admin-toggle-btn:hover { background:var(--bg2); border-color:var(--mustard); }
+
+#admin-panel {
+  display:none; position:fixed; bottom:4.5rem; right:1.5rem;
+  z-index:9998; background:var(--bg2);
+  border:1px solid var(--border); border-radius:6px;
+  padding:1.25rem; min-width:260px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+#admin-panel.open { display:block; }
+#admin-panel h4 {
+  font-family:'Montserrat',sans-serif; font-size:0.65rem;
+  font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--mustard); margin-bottom:1rem;
+  padding-bottom:0.5rem; border-bottom:1px solid var(--border);
+}
+.admin-row {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.admin-row:last-of-type { border-bottom:none; margin-bottom:0.75rem; }
+.admin-row-label { font-size:0.82rem; color:var(--ivory); }
+.toggle-switch { position:relative; width:36px; height:20px; }
+.toggle-switch input { opacity:0; width:0; height:0; }
+.toggle-slider {
+  position:absolute; inset:0; background:rgba(255,255,255,0.1);
+  border-radius:20px; cursor:pointer; transition:0.3s;
+}
+.toggle-slider::before {
+  content:''; position:absolute;
+  width:14px; height:14px; border-radius:50%;
+  background:#fff; left:3px; top:3px; transition:0.3s;
+}
+.toggle-switch input:checked + .toggle-slider { background:var(--green); }
+.toggle-switch input:checked + .toggle-slider::before { transform:translateX(16px); }
+#admin-save-btn {
+  width:100%; padding:0.65rem;
+  background:var(--green); color:#fff; border:none; border-radius:3px;
+  font-family:'Montserrat',sans-serif; font-size:0.68rem;
+  font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  cursor:pointer; transition:background 0.2s;
+}
+#admin-save-btn:hover { background:var(--green-lt); }
+.admin-login {
+  display:flex; flex-direction:column; gap:0.6rem;
+}
+.admin-login input {
+  background:var(--bg); border:1px solid var(--border);
+  color:var(--ivory); padding:0.55rem 0.75rem;
+  border-radius:3px; font-size:0.85rem; font-family:'Lato',sans-serif;
+  width:100%;
+}
+.admin-login input:focus { outline:none; border-color:var(--green); }
+.admin-login button {
+  padding:0.6rem;
+  background:var(--burgundy); color:#fff; border:none;
+  border-radius:3px; font-family:'Montserrat',sans-serif;
+  font-size:0.68rem; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; cursor:pointer; transition:background 0.2s;
+}
+.admin-login button:hover { background:var(--burg-lt); }
+.admin-error { font-size:0.72rem; color:#e05555; text-align:center; display:none; }
+</style>
+</head>
+<body>
+
+<!-- ══ COMING SOON OVERLAY ══ -->
+<div class="coming-soon-overlay" id="coming-soon">
+  <div class="ornament">✦ ✦ ✦</div>
+  <h2>Something Special<br/>Is Coming</h2>
+  <p>The George Barnes Family Reunion website is being prepared. Check back soon for full details about our 2026 celebration.</p>
+  <div style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mustard);">July 10–11 &nbsp;·&nbsp; Erwin, NC</div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="main-nav" style="display:none;">
+  <a href="#home" class="nav-logo">Barnes '26</a>
+  <ul class="nav-links" id="nav-links">
+    <li id="nav-home"><a href="#home">Home</a></li>
+    <li id="nav-details" class="hidden-page"><a href="#details">Details</a></li>
+    <li id="nav-schedule" class="hidden-page"><a href="#schedule">Schedule</a></li>
+    <li id="nav-legacy" class="hidden-page"><a href="#legacy">Our Legacy</a></li>
+    <li id="nav-gallery" class="hidden-page"><a href="#gallery">Gallery</a></li>
+    <li id="nav-rsvp" class="hidden-page"><a href="#rsvp" class="rsvp-link">RSVP</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══ SECTION: HOME ══ -->
+<section class="site-section" id="home">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Celebrating Our Roots &nbsp;·&nbsp; Together Again</p>
+    <h1 class="hero-title">George Barnes<em>Family Reunion</em></h1>
+    <p class="hero-sub">Honoring Yesterday &nbsp;·&nbsp; Celebrating Today</p>
+    <div class="gold-rule hero-rule"></div>
+    <div class="hero-dates">
+      <div class="hero-date-row">
+        <div class="hero-date-label green">Friday, July 10</div>
+        <div class="hero-date-name">Kickoff Evening Activity</div>
+      </div>
+      <div class="hero-date-row">
+        <div class="hero-date-label mustard">Saturday, July 11</div>
+        <div class="hero-date-name">Family Reunion</div>
+      </div>
+    </div>
+    <p class="hero-location">Erwin, North Carolina</p>
+    <div class="hero-btns">
+      <a href="#rsvp" class="btn-primary" id="hero-rsvp-btn">Reserve Your Spot</a>
+      <a href="#details" class="btn-outline" id="hero-details-btn">Event Details</a>
+    </div>
+    <p class="hero-theme">"Honoring Yesterday, Celebrating Today"</p>
+  </div>
+</section>
+
+<!-- ══ SECTION: COUNTDOWN ══ -->
+<section class="site-section" id="countdown">
+  <p class="countdown-label">The Reunion Is Coming ✦</p>
+  <div class="countdown-grid">
+    <div class="count-block"><span class="count-num" id="cd-days">---</span><span class="count-lbl">Days</span></div>
+    <div class="count-block"><span class="count-num" id="cd-hours">--</span><span class="count-lbl">Hours</span></div>
+    <div class="count-block"><span class="count-num" id="cd-mins">--</span><span class="count-lbl">Minutes</span></div>
+    <div class="count-block"><span class="count-num" id="cd-secs">--</span><span class="count-lbl">Seconds</span></div>
+  </div>
+</section>
+
+<!-- ══ SECTION: EVENT DETAILS ══ -->
+<section class="site-section" id="details">
+  <div class="section-wrap">
+    <div style="text-align:center; margin-bottom:0;">
+      <span class="section-eye">The Details</span>
+      <h2 class="section-h2">What You Need to <em>Know</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Everything you need to plan your trip. More details will be added as we get closer!</p>
+    </div>
+    <div class="details-grid">
+      <div class="detail-card"><span class="detail-icon">📅</span><h3>Kickoff</h3><p>Friday, July 10</p><p class="detail-sub">Evening Activity — TBD</p></div>
+      <div class="detail-card"><span class="detail-icon">⭐</span><h3>Main Reunion</h3><p>Saturday, July 11</p><p class="detail-sub">Full day of family &amp; fun</p></div>
+      <div class="detail-card"><span class="detail-icon">📍</span><h3>Location</h3><p>Erwin, NC</p><p class="detail-sub">Venue details coming soon</p></div>
+      <div class="detail-card"><span class="detail-icon">🕐</span><h3>Time</h3><p>All Day</p><p class="detail-sub">Gates open TBD</p></div>
+      <div class="detail-card"><span class="detail-icon">👕</span><h3>Family Colors</h3><p>Forest Green &amp; Mustard</p><p class="detail-sub">T-shirts available — see RSVP</p></div>
+      <div class="detail-card"><span class="detail-icon">🏨</span><h3>Lodging</h3><p>Coming Soon</p><p class="detail-sub">Hotel block details TBD</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION: SCHEDULE ══ -->
+<section class="site-section" id="schedule">
+  <div class="section-wrap">
+    <div style="text-align:center; margin-bottom:0;">
+      <span class="section-eye">The Plan</span>
+      <h2 class="section-h2">How the Days <em>Unfold</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Full schedule coming soon. Here's a preview of what to expect.</p>
+    </div>
+    <div class="schedule-inner">
+      <div class="timeline">
+
+        <div class="timeline-day">
+          <div class="timeline-day-label">Friday, July 10 — Kickoff Evening</div>
+          <div class="timeline-item">
+            <div class="t-bubble">
+              <div class="t-time">Evening</div>
+              <div class="t-event">Kickoff Activity</div>
+              <div class="t-desc">Details coming soon — stay tuned!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-day">
+          <div class="timeline-day-label">Saturday, July 11 — Main Reunion</div>
+          <div class="timeline-item">
+            <div class="t-bubble">
+              <div class="t-time">☀️ Morning</div>
+              <div class="t-event">Welcome &amp; Check-In</div>
+              <div class="t-desc">Grab your badge, pick up your t-shirt, and find your people!</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-bubble">
+              <div class="t-time">🍖 Midday</div>
+              <div class="t-event">Cookout &amp; Lawn Games</div>
+              <div class="t-desc">The grill is fired up — food, fun, and games for all ages.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-bubble">
+              <div class="t-time">📖 Afternoon</div>
+              <div class="t-event">Family History Presentation</div>
+              <div class="t-desc">Presented by the Historical Committee. Learn something new about where we come from.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-bubble">
+              <div class="t-time">🎶 Evening</div>
+              <div class="t-event">Banquet &amp; Awards Night</div>
+              <div class="t-desc">Dinner, recognition of family milestones, and dancing to close out the night.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION: OUR LEGACY ══ -->
+<section class="site-section" id="legacy">
+  <div class="section-wrap">
+    <div class="legacy-inner">
+      <div class="legacy-img">
+        <span class="legacy-img-icon">📷</span>
+        <span class="legacy-img-hint">Add a cherished family photo here</span>
+      </div>
+      <div class="legacy-text">
+        <span class="section-eye">Our Story</span>
+        <h2 class="section-h2">Our Roots.<br/>Our <em>Story.</em></h2>
+        <p>The Barnes family has gathered across generations to celebrate love, legacy, and the bonds that no distance can break. Each reunion is a living thread in a story that began long before us.</p>
+        <p>In 2026, we come together again — to honor those who came before us, to celebrate each other, and to ensure the next generation knows exactly where they come from.</p>
+        <p>Whether you've been to every reunion or this is your very first — you belong here.</p>
+        <div class="legacy-stats">
+          <div class="legacy-stat"><div class="legacy-stat-num">2026</div><div class="legacy-stat-lbl">This Year</div></div>
+          <div class="legacy-stat"><div class="legacy-stat-num">5+</div><div class="legacy-stat-lbl">Branches</div></div>
+          <div class="legacy-stat"><div class="legacy-stat-num">∞</div><div class="legacy-stat-lbl">Memories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION: RSVP ══ -->
+<section class="site-section" id="rsvp">
+  <div class="section-wrap">
+    <div class="rsvp-intro">
+      <span class="section-eye">RSVP &amp; Registration</span>
+      <h2 class="section-h2">Will You Be <em>There?</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Secure your spot and let us know who's coming with you.</p>
+    </div>
+
+    <div id="rsvp-success">
+      <h3>You're on the list!</h3>
+      <p>Thank you for RSVPing to the George Barnes Family Reunion. We'll be in touch with more details soon. Can't wait to see you!</p>
+    </div>
+
+    <!-- ⚠️ Replace YOUR_GETFORM_ENDPOINT below with your actual Getform URL -->
+    <form id="rsvp-form" action="https://getform.io/f/YOUR_GETFORM_ENDPOINT" method="POST" novalidate>
+      <div class="rsvp-form-wrap">
+
+        <!-- Section 1: Your Info -->
+        <div class="form-card">
+          <div class="form-card-title"><span class="num">1</span> Your Information</div>
+
+          <div class="form-row">
+            <div class="form-field" id="ff-first">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" name="first_name" placeholder="First"/>
+              <span class="field-error">Required</span>
+            </div>
+            <div class="form-field" id="ff-last">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" name="last_name" placeholder="Last"/>
+              <span class="field-error">Required</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field" id="ff-email">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" name="email" placeholder="your@email.com"/>
+              <span class="field-error">Valid email required</span>
+            </div>
+            <div class="form-field">
+              <label>Phone</label>
+              <input type="tel" name="phone" placeholder="(555) 000-0000"/>
+            </div>
+          </div>
+
+          <!-- SMS opt-in -->
+          <div class="sms-optin-box">
+            <input type="checkbox" id="sms-optin" name="sms_optin" value="Yes"/>
+            <label for="sms-optin" class="sms-optin-label">
+              <strong>📱 Text me reunion alerts!</strong>
+              <span>I agree to receive text updates about the 2026 George Barnes Family Reunion. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label>City, State</label>
+              <input type="text" name="city_state" placeholder="e.g. Greensboro, NC"/>
+            </div>
+            <div class="form-field" id="ff-branch">
+              <label>Family Branch <span class="req">*</span></label>
+              <select name="family_branch">
+                <option value="">— Select —</option>
+                <option>Barnes – North Carolina</option>
+                <option>Barnes – Virginia</option>
+                <option>Barnes – Georgia</option>
+                <option>Barnes – Other State</option>
+                <option>Married / Extended Family</option>
+              </select>
+              <span class="field-error">Please select a branch</span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Attendance <span class="req">*</span></label>
+            <div class="attend-toggle">
+              <label>
+                <input type="radio" name="attendance" value="Yes" checked/>
+                <span class="attend-option">✅ Yes, I'll be there!</span>
+              </label>
+              <label>
+                <input type="radio" name="attendance" value="Maybe"/>
+                <span class="attend-option">🤔 Maybe</span>
+              </label>
+              <label>
+                <input type="radio" name="attendance" value="No"/>
+                <span class="attend-option">❌ Can't make it<span class="attend-sub">We'd love to stay in touch!</span></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Guests -->
+        <div class="form-card">
+          <div class="form-card-title"><span class="num">2</span> Additional Guests</div>
+          <div class="counter-row">
+            <span class="counter-label">How many guests are you bringing?</span>
+            <div class="counter-btns">
+              <button type="button" class="counter-btn" id="guest-dec" onclick="changeGuests(-1)" disabled>−</button>
+              <span class="counter-num" id="guest-count">0</span>
+              <button type="button" class="counter-btn" id="guest-inc" onclick="changeGuests(1)">+</button>
+            </div>
+          </div>
+          <div id="guest-list"></div>
+        </div>
+
+        <!-- Section 3: Notes -->
+        <div class="form-card">
+          <div class="form-card-title"><span class="num">3</span> Anything Else?</div>
+          <div class="form-field">
+            <label>Dietary Restrictions / Special Needs</label>
+            <textarea name="dietary" placeholder="e.g. gluten-free, nut allergy, wheelchair seating needed…"></textarea>
+          </div>
+          <div class="form-field">
+            <label>Message to the Family</label>
+            <textarea name="message" placeholder="Share a memory, a shoutout, or just say hello!"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="rsvp-submit">Send My RSVP ✦</button>
+
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ══ SECTION: GALLERY ══ -->
+<section class="site-section" id="gallery">
+  <div class="section-wrap">
+    <div style="text-align:center;">
+      <span class="section-eye">Memories</span>
+      <h2 class="section-h2">Good Times, <em>Always</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Add photos from past reunions here — more coming soon!</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-cell large"><span class="g-icon">🖼</span><span class="g-hint">Featured photo</span></div>
+      <div class="gallery-cell"><span class="g-icon">📷</span><span class="g-hint">Photo</span></div>
+      <div class="gallery-cell"><span class="g-icon">📷</span><span class="g-hint">Photo</span></div>
+      <div class="gallery-cell"><span class="g-icon">📷</span><span class="g-hint">Photo</span></div>
+      <div class="gallery-cell"><span class="g-icon">📷</span><span class="g-hint">Photo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="main-footer" style="display:none;">
+  <div class="footer-logo">George Barnes Family Reunion</div>
+  <div class="footer-tagline">"Honoring Yesterday, Celebrating Today"</div>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#legacy">Our Legacy</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 George Barnes Family Reunion Committee &nbsp;·&nbsp; Erwin, NC &nbsp;·&nbsp; Made with love</p>
+</footer>
+
+<!-- ══ ADMIN TOGGLE BUTTON ══ -->
+<button id="admin-toggle-btn" onclick="toggleAdminPanel()">⚙ Admin</button>
+
+<!-- ══ ADMIN PANEL ══ -->
+<div id="admin-panel">
+  <h4>Page Visibility</h4>
+
+  <!-- Login state (shown first) -->
+  <div id="admin-login-form">
+    <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.75rem;">Enter admin password to manage pages.</p>
+    <div class="admin-login">
+      <input type="password" id="admin-pw" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()"/>
+      <button onclick="adminLogin()">Unlock</button>
+      <span class="admin-error" id="admin-error">Incorrect password</span>
+    </div>
+  </div>
+
+  <!-- Controls (shown after login) -->
+  <div id="admin-controls" style="display:none;">
+    <div class="admin-row">
+      <span class="admin-row-label">Home</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="home" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <div class="admin-row">
+      <span class="admin-row-label">Countdown</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="countdown" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <div class="admin-row">
+      <span class="admin-row-label">Event Details</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="details" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <div class="admin-row">
+      <span class="admin-row-label">Schedule</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="schedule" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <div class="admin-row">
+      <span class="admin-row-label">Our Legacy</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="legacy" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <div class="admin-row">
+      <span class="admin-row-label">RSVP / Registration</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="rsvp" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <div class="admin-row">
+      <span class="admin-row-label">Photo Gallery</span>
+      <label class="toggle-switch"><input type="checkbox" data-section="gallery" onchange="adminToggle(this)"/><span class="toggle-slider"></span></label>
+    </div>
+    <button id="admin-save-btn" onclick="adminSave()">Save &amp; Publish Changes</button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════
+//  ADMIN PASSWORD
+//  Change this to whatever you want!
+// ══════════════════════════════════════
+const ADMIN_PASSWORD = 'Barnes2026!';
+
+// ══════════════════════════════════════
+//  PAGE VISIBILITY CONFIG
+//  Set true = visible to the public
+//  All false = Coming Soon shows
+// ══════════════════════════════════════
+const DEFAULT_VISIBILITY = {
+  home:      false,
+  countdown: false,
+  details:   false,
+  schedule:  false,
+  legacy:    false,
+  rsvp:      false,
+  gallery:   false
+};
+
+// ── State ──
+let visibility = {};
+let adminUnlocked = false;
+let guestCount = 0;
+
+// ── Init ──
+function init() {
+  const saved = localStorage.getItem('barnes_visibility');
+  visibility = saved ? JSON.parse(saved) : { ...DEFAULT_VISIBILITY };
+  applyVisibility();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+function applyVisibility() {
+  const sections = ['home','countdown','details','schedule','legacy','rsvp','gallery'];
+  const anyVisible = sections.some(s => visibility[s]);
+
+  // Coming soon overlay
+  const overlay = document.getElementById('coming-soon');
+  const nav = document.getElementById('main-nav');
+  const footer = document.getElementById('main-footer');
+
+  if (!anyVisible) {
+    overlay.classList.remove('hidden');
+    nav.style.display = 'none';
+    footer.style.display = 'none';
+  } else {
+    overlay.classList.add('hidden');
+    nav.style.display = 'flex';
+    footer.style.display = 'block';
+  }
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (visibility[id]) {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+    // Nav items
+    const navItem = document.getElementById('nav-' + id);
+    if (navItem) {
+      navItem.classList.toggle('hidden-page', !visibility[id]);
+    }
+  });
+
+  // Hero buttons: hide if target section is not visible
+  const rsvpBtn = document.getElementById('hero-rsvp-btn');
+  const detailsBtn = document.getElementById('hero-details-btn');
+  if (rsvpBtn) rsvpBtn.style.display = visibility.rsvp ? 'inline-block' : 'none';
+  if (detailsBtn) detailsBtn.style.display = visibility.details ? 'inline-block' : 'none';
+
+  // Sync admin checkboxes if panel is open
+  if (adminUnlocked) syncAdminToggles();
+}
+
+// ── Admin ──
+function toggleAdminPanel() {
+  const panel = document.getElementById('admin-panel');
+  panel.classList.toggle('open');
+}
+
+function adminLogin() {
+  const pw = document.getElementById('admin-pw').value;
+  const err = document.getElementById('admin-error');
+  if (pw === ADMIN_PASSWORD) {
+    adminUnlocked = true;
+    document.getElementById('admin-login-form').style.display = 'none';
+    document.getElementById('admin-controls').style.display = 'block';
+    syncAdminToggles();
+    err.style.display = 'none';
+  } else {
+    err.style.display = 'block';
+    document.getElementById('admin-pw').value = '';
+  }
+}
+
+function syncAdminToggles() {
+  document.querySelectorAll('#admin-controls input[type="checkbox"]').forEach(cb => {
+    const section = cb.dataset.section;
+    cb.checked = !!visibility[section];
+  });
+}
+
+function adminToggle(cb) {
+  const section = cb.dataset.section;
+  visibility[section] = cb.checked;
+  applyVisibility();
+}
+
+function adminSave() {
+  localStorage.setItem('barnes_visibility', JSON.stringify(visibility));
+  const btn = document.getElementById('admin-save-btn');
+  btn.textContent = '✓ Saved!';
+  btn.style.background = 'var(--mustard)';
+  btn.style.color = 'var(--bg)';
+  setTimeout(() => {
+    btn.textContent = 'Save & Publish Changes';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 2000);
+}
+
+// ── Mobile nav ──
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+
+// ── Countdown ──
+function updateCountdown() {
+  const target = new Date('2026-07-10T18:00:00');
+  const diff = target - new Date();
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+      document.getElementById(id).textContent = '0';
+    });
+    return;
+  }
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff / 86400000)).padStart(3,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+}
+
+// ── Guest counter ──
+function changeGuests(delta) {
+  const newCount = guestCount + delta;
+  if (newCount < 0 || newCount > 10) return;
+  if (delta > 0) addGuestCard(newCount);
+  else removeLastGuest();
+  guestCount = newCount;
+  document.getElementById('guest-count').textContent = guestCount;
+  document.getElementById('guest-dec').disabled = guestCount === 0;
+  document.getElementById('guest-inc').disabled = guestCount === 10;
+}
+
+function addGuestCard(n) {
+  const list = document.getElementById('guest-list');
+  const card = document.createElement('div');
+  card.className = 'guest-card'; card.dataset.n = n;
+  card.innerHTML = `
+    <div class="guest-card-head">
+      <span class="guest-card-title">Guest ${n}</span>
+      <button type="button" class="remove-guest" onclick="removeGuest(${n})" title="Remove">✕</button>
+    </div>
+    <div class="form-row">
+      <div class="form-field" id="gf-name-${n}">
+        <label>Full Name <span class="req">*</span></label>
+        <input type="text" name="guest_${n}_name" placeholder="First Last"/>
+        <span class="field-error">Required</span>
+      </div>
+      <div class="form-field">
+        <label>Age 13 or under?</label>
+        <select name="guest_${n}_child">
+          <option value="">— Select —</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+    </div>`;
+  list.appendChild(card);
+}
+
+function removeLastGuest() {
+  const list = document.getElementById('guest-list');
+  const cards = list.querySelectorAll('.guest-card');
+  if (cards.length) cards[cards.length - 1].remove();
+}
+
+function removeGuest(n) {
+  const card = document.querySelector(`.guest-card[data-n="${n}"]`);
+  if (card) card.remove();
+  guestCount--;
+  document.getElementById('guest-count').textContent = guestCount;
+  document.getElementById('guest-dec').disabled = guestCount === 0;
+  document.getElementById('guest-inc').disabled = guestCount === 10;
+  document.querySelectorAll('.guest-card').forEach((c, i) => {
+    c.querySelector('.guest-card-title').textContent = `Guest ${i + 1}`;
+  });
+}
+
+// ── RSVP Form Submit ──
+document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  [
+    { id:'ff-first',  field:'first_name',     type:'text'  },
+    { id:'ff-last',   field:'last_name',      type:'text'  },
+    { id:'ff-email',  field:'email',          type:'email' },
+    { id:'ff-branch', field:'family_branch',  type:'select'}
+  ].forEach(r => {
+    const el = this.querySelector(`[name="${r.field}"]`);
+    const wrap = document.getElementById(r.id);
+    let ok = el.value.trim() !== '';
+    if (r.type === 'email') ok = ok && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+    wrap.classList.toggle('has-error', !ok);
+    if (!ok) valid = false;
+  });
+
+  document.querySelectorAll('.guest-card').forEach(card => {
+    const n = card.dataset.n;
+    const nameEl = card.querySelector(`[name="guest_${n}_name"]`);
+    const wrap = document.getElementById(`gf-name-${n}`);
+    if (nameEl && wrap) {
+      const ok = nameEl.value.trim() !== '';
+      wrap.classList.toggle('has-error', !ok);
+      if (!ok) valid = false;
+    }
+  });
+
+  if (!valid) {
+    document.querySelector('.has-error')?.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  const formData = new FormData(this);
+  const btn = this.querySelector('.rsvp-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    await fetch(this.action, { method:'POST', body:formData, headers:{ Accept:'application/json' } });
+    this.style.display = 'none';
+    document.getElementById('rsvp-success').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('rsvp').offsetTop - 80, behavior:'smooth' });
+  } catch(err) {
+    btn.textContent = 'Send My RSVP ✦';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+});
+
+init();
+</script>
+</body>
+</html>
